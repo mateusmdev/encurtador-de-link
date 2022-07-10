@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <h1>Encurte seu link agora</h1>
+        <form action="/new-link" method="POST">
+            <label for="url" class="sr-only">Url</label>
+            <input type="url" name="url" id="url" placeholder="Digite sua URL aqui">
+            <button type="submit" class="button">Encurtar</button>
+        </form>
+
+        <ul class="table">
+            <li class="row">
+                <div class="th col">URL Original</div>
+                <div class="th col">URL Virtual</div>
+                <div class="th col click">Clicks</div>
+            </li>
+
+            <% result.forEach(link => { %>
+                <li class="row item">
+                    <div class="col">
+                        <a href="<%= link.url%>">
+                            <%= link.url %>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/<%= link.virtualUrl%>">
+                            <%= link.virtualUrl %>
+                        </a>
+                    </div>
+                    <div class="col click"><%= link.click %></div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
